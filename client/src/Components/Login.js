@@ -20,30 +20,24 @@ const Login = () => {
 
                                                 <div className="d-flex align-items-center mb-3 pb-1">
                                                     <i className="fas fa-cubes fa-2x me-3" style={{ color: '#ff6219' }}></i>
-                                                    <span className="h1 fw-bold mb-0">Logo</span>
                                                 </div>
 
-                                                <h5 className="fw-normal mb-3 pb-3" style={{ letterSpacing: '1px' }}>Sign into your account</h5>
+                                                <h3 className="fw-normal mb-3 pb-3" style={{ letterSpacing: '1px', marginLeft: '30%', fontSize:'230%' }}>SignIn Here</h3>
 
                                                 <div className="form-outline mb-4">
-                                                    <input type="email" id="form2Example17" className="form-control form-control-lg" />
-                                                    <label className="form-label" for="form2Example17">Email address</label>
+                                                    <input type="email" id="form2Example17" className="form-control form-control-lg" placeholder='Email' />
                                                 </div>
 
                                                 <div className="form-outline mb-4">
-                                                    <input type="password" id="form2Example27" className="form-control form-control-lg" />
-                                                    <label className="form-label" for="form2Example27">Password</label>
+                                                    <input type="password" id="form2Example27" className="form-control form-control-lg" placeholder='Password' />
                                                 </div>
 
                                                 <div className="pt-1 mb-4">
-                                                    <button className="btn btn-dark btn-lg btn-block" type="button">Login</button>
+                                                    <button className="btn btn-dark btn-lg btn-block" type="button" style={{ marginLeft: '40%', padding:'10px 20px' }}>Login</button>
                                                 </div>
 
-                                                <a className="small text-muted" href="#!">Forgot password?</a>
-                                                <p className="mb-5 pb-lg-2" style={{ color: '#393f81' }}>Don't have an account? <a href="#!"
+                                                <p className="mb-5 pb-lg-2" style={{ color: '#393f81', marginLeft: '25%' }}>Don't have an account? <a href="#!"
                                                     style={{ color: '#393f81' }}>Register here</a></p>
-                                                <a href="#!" className="small text-muted">Terms of use.</a>
-                                                <a href="#!" className="small text-muted">Privacy policy</a>
                                             </form>
 
                                         </div>
