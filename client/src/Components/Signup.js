@@ -1,6 +1,7 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
-const Login = () => {
+const Signup = () => {
     return (
         <>
             <section className="vh-100" style={{ backgroundColor: '#9A616D' }}>
@@ -25,19 +26,27 @@ const Login = () => {
                                                 <h3 className="fw-normal mb-3 pb-3" style={{ letterSpacing: '1px', marginLeft: '30%', fontSize: '230%' }}>SignIn Here</h3>
 
                                                 <div className="form-outline mb-4">
-                                                    <input type="email" id="form2Example17" className="form-control form-control-lg" placeholder='Email' name='email'/>
+                                                    <input type="text" id="form2Example17" className="form-control form-control-lg" placeholder='Name' name='name' />
+                                                </div>
+
+                                                <div className="form-outline mb-4">
+                                                    <input type="email" id="form2Example17" className="form-control form-control-lg" placeholder='Email' name='email' />
                                                 </div>
 
                                                 <div className="form-outline mb-4">
                                                     <input type="password" id="form2Example27" className="form-control form-control-lg" placeholder='Password' name='password'/>
                                                 </div>
 
+                                                <div className="form-outline mb-4">
+                                                    <input type="password" id="form2Example27" className="form-control form-control-lg" placeholder=' Confirm Password' name='confirmpassword' />
+                                                </div>
+
                                                 <div className="pt-1 mb-4">
                                                     <button className="btn btn-dark btn-lg btn-block" type="button" style={{ marginLeft: '40%', padding: '10px 20px' }}>Login</button>
                                                 </div>
 
-                                                <p className="mb-5 pb-lg-2" style={{ color: '#393f81', marginLeft: '25%' }}>Don't have an account? <a href="signup"
-                                                    style={{ color: '#393f81' }}>Register here</a></p>
+                                                <p className="mb-5 pb-lg-2" style={{ color: '#393f81', marginLeft: '25%' }}>Already have an account? <Link to="/"
+                                                    style={{ color: '#393f81' }}>Login here</Link></p>
                                             </form>
 
                                         </div>
@@ -52,5 +61,5 @@ const Login = () => {
     )
 }
 
-export default Login
+export default Signup
 
