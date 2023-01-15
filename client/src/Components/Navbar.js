@@ -5,7 +5,7 @@ import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import Button from 'react-bootstrap/Button';
 import Dropdown from 'react-bootstrap/Dropdown';
 
-export default function Navbar() {
+export default function Navbar({ getName }) {
     const [click, setClick] = useState(false);
     const [button, setButton] = useState(true);
 
@@ -48,8 +48,8 @@ export default function Navbar() {
                                 <Dropdown.Toggle split id="dropdown-split-basic" />
 
                                 <Dropdown.Menu>
-                                    <Dropdown.Item href="nse">NSE</Dropdown.Item>
-                                    <Dropdown.Item href="bse">BSE</Dropdown.Item>
+                                    <Dropdown.Item href="/nse">NSE</Dropdown.Item>
+                                    <Dropdown.Item href="/bse">BSE</Dropdown.Item>
                                 </Dropdown.Menu>
                             </Dropdown>
                         </li>
@@ -61,10 +61,10 @@ export default function Navbar() {
 
                                 <Dropdown.Menu>
                                     <Dropdown.Item href="/stock">Reliance</Dropdown.Item>
-                                    <Dropdown.Item href="#/action-2">Ashok Leyland</Dropdown.Item>
-                                    <Dropdown.Item href="#/action-2">Cipla</Dropdown.Item>
-                                    <Dropdown.Item href="#/action-2">Tata Steel</Dropdown.Item>
-                                    <Dropdown.Item href="#/action-2">Eicher Motors</Dropdown.Item>
+                                    <Dropdown.Item href="/stock">Ashok Leyland</Dropdown.Item>
+                                    <Dropdown.Item href="/stock">Cipla</Dropdown.Item>
+                                    <Dropdown.Item href="/stock">Tata Steel</Dropdown.Item>
+                                    <Dropdown.Item href="/stock">Eicher Motors</Dropdown.Item>
                                 </Dropdown.Menu>
                             </Dropdown>
                         </li>
@@ -79,7 +79,7 @@ export default function Navbar() {
                             </Link>
                         </li> */}
                     </ul>
-                    {/* {button && <Button buttonStyle='btn--outline'>SIGN UP</Button>} */}
+                    {button && <Button></Button>}
                 </div>
             </div>
         </>

@@ -30,7 +30,7 @@ const Signup = () => {
                     alert('user already exists')
                 }
                 else {
-                    navigate('/')
+                    navigate('/navbar')
                 }
             })
     }

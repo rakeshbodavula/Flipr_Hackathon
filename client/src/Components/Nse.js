@@ -1,10 +1,12 @@
 import React from 'react'
 import DropdownButton from 'react-bootstrap/DropdownButton';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
+import Navbar from './Navbar';
 
 export default function Nse() {
     return (
         <>
+            <Navbar />
             <section>
                 <div className="container">
                     <div className="row" style={{ marginTop: '5%' }}>

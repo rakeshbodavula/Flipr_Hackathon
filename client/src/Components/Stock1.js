@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Plot from 'react-plotly.js';
 import Navbar from './Navbar';
 
-class Stock extends Component {
+class Stock1 extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -12,40 +12,27 @@ class Stock extends Component {
 
     }
 
-
     componentDidMount() {
-        this.fetchStock();
-    }
-
-    fetchStock() {
-        const API_KEY = 'HGJWFG4N8AQ66ICD'
         const pointToThis = this;
-        console.log(pointToThis);
-        let StockSymbol = 'AMZN';
-        let API_Call = `http://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=${StockSymbol}&outputsize=compact&apikey=${API_KEY}`;
         let stockChartXValuesFunction = [];
         let stockChartYValuesFunction = [];
+        const endpoint = "http://localhost:9999/companies/RELIANCE"
 
-        fetch(API_Call)
-            .then((response) => {
-                return response.json();
-            })
-            .then(
-                function (data) {
-                    console.log(data);
+        fetch(endpoint)
+            .then(response => response.json())
+            .then(data => {
+                console.log(data)
 
-                    for (var key in data['Time Series (Daily)']) {
-                        stockChartXValuesFunction.push(key);
-                        stockChartYValuesFunction.push(data['Time Series (Daily)']
-                        [key]['1. open']);
-                    }
-                    // console.log(stockChartXValuesFunction);
-                    pointToThis.setState({
-                        stockChartXValues: stockChartXValuesFunction,
-                        stockChartYValues: stockChartYValuesFunction
-                    });
+                for (var key in data['companies']) {
+                    stockChartXValuesFunction.push(data['companies'][key]['Date']);
+                    stockChartYValuesFunction.push(data['companies'][key]['Open']);
                 }
-            )
+                // console.log(stockChartXValuesFunction);
+                pointToThis.setState({
+                    stockChartXValues: stockChartXValuesFunction,
+                    stockChartYValues: stockChartYValuesFunction
+                });
+            })
     }
 
     render() {
@@ -53,6 +40,7 @@ class Stock extends Component {
             <>
                 <Navbar />
                 <div>
+                    {console.log(this.state.data)}
                     <h1>Stock market</h1>
                     <Plot
                         data={[
@@ -73,4 +61,4 @@ class Stock extends Component {
     }
 }
 
-export default Stock;
+export default Stock1;

@@ -18,10 +18,11 @@ const Login = () => {
         })
         const json = await response.json()
         if (json.isLogged) {
-            navigate('signup')
+            navigate('navbar')
         }
         else {
-            navigate('navbar')
+            alert('INVALID CREDENTIALS')
+            navigate('/')
         }
 
         if (json.msg === "Invalid Credentials") {
