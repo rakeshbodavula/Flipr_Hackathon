@@ -48,7 +48,7 @@ export default function Navbar() {
                                 <Dropdown.Toggle split id="dropdown-split-basic" />
 
                                 <Dropdown.Menu>
-                                    <Dropdown.Item href="#/action-1">NSE</Dropdown.Item>
+                                    <Dropdown.Item href="nse">NSE</Dropdown.Item>
                                     <Dropdown.Item href="#/action-2">BSE</Dropdown.Item>
                                 </Dropdown.Menu>
                             </Dropdown>
