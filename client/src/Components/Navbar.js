@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import './Navbar.css';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
@@ -7,29 +7,29 @@ import Dropdown from 'react-bootstrap/Dropdown';
 
 export default function Navbar() {
     const [click, setClick] = useState(false);
-    // const [button, setButton] = useState(true);
+    const [button, setButton] = useState(true);
 
     const handleClick = () => setClick(!click);
     const closeMobileMenu = () => setClick(false);
 
-    // const showButton = () => {
-    //     if (window.innerWidth <= 960) {
-    //         setButton(false);
-    //     } else {
-    //         setButton(true);
-    //     }
-    // };
+    const showButton = () => {
+        if (window.innerWidth <= 960) {
+            setButton(false);
+        } else {
+            setButton(true);
+        }
+    };
 
-    // useEffect(() => {
-    //     showButton();
-    // }, []);
+    useEffect(() => {
+        showButton();
+    }, []);
 
-    // window.addEventListener('resize', showButton);
+    window.addEventListener('resize', showButton);
     return (
         <>
             <div className='navbar'>
                 <div className='navbar-container'>
-                    <Link to='/' className='navbar-logo' onClick={closeMobileMenu}>
+                    <Link className='navbar-logo' onClick={closeMobileMenu}>
                         TRVL<i className='fab fa-typo3' />
                     </Link>
                     <div className='menu-icon' onClick={handleClick}>
@@ -37,7 +37,7 @@ export default function Navbar() {
                     </div>
                     <ul className={click ? 'nav-menu active' : 'nav-menu'}>
                         <li className='nav-item'>
-                            <Link to='/' className='nav-links' onClick={closeMobileMenu}>
+                            <Link className='nav-links' onClick={closeMobileMenu}>
                                 Home
                             </Link>
                         </li>
@@ -49,7 +49,7 @@ export default function Navbar() {
 
                                 <Dropdown.Menu>
                                     <Dropdown.Item href="nse">NSE</Dropdown.Item>
-                                    <Dropdown.Item href="#/action-2">BSE</Dropdown.Item>
+                                    <Dropdown.Item href="bse">BSE</Dropdown.Item>
                                 </Dropdown.Menu>
                             </Dropdown>
                         </li>
@@ -60,7 +60,7 @@ export default function Navbar() {
                                 <Dropdown.Toggle split id="dropdown-split-basic" />
 
                                 <Dropdown.Menu>
-                                    <Dropdown.Item href="#/action-1">Reliance</Dropdown.Item>
+                                    <Dropdown.Item href="/stock">Reliance</Dropdown.Item>
                                     <Dropdown.Item href="#/action-2">Ashok Leyland</Dropdown.Item>
                                     <Dropdown.Item href="#/action-2">Cipla</Dropdown.Item>
                                     <Dropdown.Item href="#/action-2">Tata Steel</Dropdown.Item>

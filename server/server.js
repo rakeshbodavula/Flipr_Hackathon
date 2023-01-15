@@ -17,13 +17,8 @@ app.use(express.json())
 app.use(bodyParser.json())
 app.use(cors())
 
-
-// database connectivitycls
-// const dbURI = 'mongodb://localhost:27017/flipr'
-// const dbURI = 'mongodb+srv://flipr:flipr%40hackathon@cluster0.dkyw7jy.mongodb.net/test'
 const dbURI = 'mongodb+srv://flipr:flipr%40hackathon@cluster0.dkyw7jy.mongodb.net/?retryWrites=true&w=majority'
 
-// const User = require('./models/User')
 
 const port = process.env.PORT || 9999
 mongoose.connect(dbURI, { useNewUrlParser: true })
@@ -33,58 +28,82 @@ mongoose.connect(dbURI, { useNewUrlParser: true })
         .catch((err) => console.log(err))
 
 
-app.get('/', (req, res) => {
-        res.send("hii")
-})
-
-api
-
 app.post('/signupapi', async (req, res) => {
 
         const { name, email, password, confirmpassword } = req.body
 
+        let user = await User.findOne({ email }).lean()
+
+        if (user) {
+                console.log('user already exists')
+                return res.json({ msg: "err" })
+        }
+
         try {
-                const userDetails = {
-                        name: name,
-                        email: email,
-                        password: password
-                }
-
-                if (password === confirmpassword) {
-                        await new User(userDetails).save()
-                }
-                else {
-                        res.send('Password and confirpassword are not matching')
-                }
-
-                res.send('User created')
+                user = await User.create({ email, name, password })
+                return res.json({ msg: '' })
         } catch (error) {
-                res.send(error)
+                console.log(error.message)
+                return res.json({ msg: 'err' })
         }
 
 })
 
 
-app.get('/loginapi', async (req, res) => {
+app.post('/loginapi', async (req, res) => {
 
-        const { email, password } = req.body
+        const email = req.body.email
+        const password = req.body.password
+        console.log(email)
 
         await User.findOne({ "email": email })
                 .then(result => {
                         if (result == null) {
-                                res.send("Invalid Credentials")
+                                res.json({ msg: "Invalid Credentials" })
                         }
                         else {
                                 if (bcryptjs.compare(result.password, password)) {
-
-                                        res.send('User Present')
+                                        res.json({
+                                                isLogged: true
+                                        })
                                 }
-                                else
-                                        res.send("Invalid Credentials")
+                                else {
+                                        res.json({
+                                                isLogged: false
+                                        })
+                                }
                         }
                 })
                 .catch(err => {
                         console.log(err)
                 })
 
+})
+
+
+app.get('/stocks/:stocktype', async (req, res) => {
+        await Stock.find({ StockType: req.params.stocktype })
+                .then(result => {
+                        if (result == null) {
+                                res.send("Invalid Stock")
+                        }
+                        else {
+                                res.json(result)
+                        }
+                })
+                .catch(err => console.log(err))
+})
+
+
+app.get('/companies/:companyName', async (req, res) => {
+        await Company.find({ CompanyName: req.params.companyName })
+                .then(result => {
+                        if (result == null) {
+                                res.send("Invalid Company")
+                        }
+                        else {
+                                res.json(result)
+                        }
+                })
+                .catch(err => console.log(err))
 })

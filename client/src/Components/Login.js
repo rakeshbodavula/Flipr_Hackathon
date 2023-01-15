@@ -1,6 +1,33 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const Login = () => {
+
+    const [email, setEmail] = useState(null)
+    const [password, setPassword] = useState(null)
+    const navigate = useNavigate()
+
+    const submitHandler = async () => {
+        const response = await fetch("http://localhost:9999/loginapi", {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ email: email, password: password })
+
+        })
+        const json = await response.json()
+        if (json.isLogged) {
+            navigate('signup')
+        }
+        else {
+            navigate('navbar')
+        }
+
+        if (json.msg === "Invalid Credentials") {
+            alert("null")
+        }
+    }
     return (
         <>
             <section className="vh-100" style={{ backgroundColor: '#9A616D' }}>
@@ -25,15 +52,15 @@ const Login = () => {
                                                 <h3 className="fw-normal mb-3 pb-3" style={{ letterSpacing: '1px', marginLeft: '30%', fontSize: '230%' }}>SignIn Here</h3>
 
                                                 <div className="form-outline mb-4">
-                                                    <input type="email" id="form2Example17" className="form-control form-control-lg" placeholder='Email' name='email'/>
+                                                    <input type="email" id="form2Example17" className="form-control form-control-lg" placeholder='Email' name='email' onChange={(e) => setEmail(e.target.value)} />
                                                 </div>
 
                                                 <div className="form-outline mb-4">
-                                                    <input type="password" id="form2Example27" className="form-control form-control-lg" placeholder='Password' name='password'/>
+                                                    <input type="password" id="form2Example27" className="form-control form-control-lg" placeholder='Password' name='password' onChange={(e) => setPassword(e.target.value)} />
                                                 </div>
 
                                                 <div className="pt-1 mb-4">
-                                                    <button className="btn btn-dark btn-lg btn-block" type="button" style={{ marginLeft: '40%', padding: '10px 20px' }}>Login</button>
+                                                    <button className="btn btn-dark btn-lg btn-block" type="button" style={{ marginLeft: '40%', padding: '10px 20px' }} onClick={submitHandler}>Login</button>
                                                 </div>
 
                                                 <p className="mb-5 pb-lg-2" style={{ color: '#393f81', marginLeft: '25%' }}>Don't have an account? <a href="signup"
@@ -53,4 +80,3 @@ const Login = () => {
 }
 
 export default Login
-
