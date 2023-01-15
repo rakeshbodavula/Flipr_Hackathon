@@ -37,6 +37,8 @@ app.get('/', (req, res) => {
         res.send("hii")
 })
 
+api
+
 app.post('/signupapi', async (req, res) => {
 
         const { name, email, password, confirmpassword } = req.body
@@ -49,7 +51,7 @@ app.post('/signupapi', async (req, res) => {
                 }
 
                 if (password === confirmpassword) {
-                     await new User(userDetails).save()
+                        await new User(userDetails).save()
                 }
                 else {
                         res.send('Password and confirpassword are not matching')
@@ -63,7 +65,7 @@ app.post('/signupapi', async (req, res) => {
 })
 
 
-app.get('/loginapi', async(req, res) => {
+app.get('/loginapi', async (req, res) => {
 
         const { email, password } = req.body
 
@@ -74,10 +76,10 @@ app.get('/loginapi', async(req, res) => {
                         }
                         else {
                                 if (bcryptjs.compare(result.password, password)) {
-                                        
+
                                         res.send('User Present')
                                 }
-                                else 
+                                else
                                         res.send("Invalid Credentials")
                         }
                 })
