@@ -60,11 +60,11 @@ export default function Navbar({ getName }) {
                                 <Dropdown.Toggle split id="dropdown-split-basic" />
 
                                 <Dropdown.Menu>
-                                    <Dropdown.Item href="/stock">Reliance</Dropdown.Item>
-                                    <Dropdown.Item href="/stock">Ashok Leyland</Dropdown.Item>
-                                    <Dropdown.Item href="/stock">Cipla</Dropdown.Item>
-                                    <Dropdown.Item href="/stock">Tata Steel</Dropdown.Item>
-                                    <Dropdown.Item href="/stock">Eicher Motors</Dropdown.Item>
+                                    <Dropdown.Item href="/reliance">Reliance</Dropdown.Item>
+                                    <Dropdown.Item href="/ashokley">Ashok Leyland</Dropdown.Item>
+                                    <Dropdown.Item href="/cipla">Cipla</Dropdown.Item>
+                                    <Dropdown.Item href="/tatasteel">Tata Steel</Dropdown.Item>
+                                    <Dropdown.Item href="/eichermot">Eicher Motors</Dropdown.Item>
                                 </Dropdown.Menu>
                             </Dropdown>
                         </li>
