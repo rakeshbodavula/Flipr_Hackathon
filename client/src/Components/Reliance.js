@@ -52,7 +52,7 @@ class Reliance extends Component {
                             },
                             { type: 'bar', x: this.stockChartXValues, y: this.stockChartYValues },
                         ]}
-                        layout={{ width: 1000, height: 500, title: 'Stock market of reliance' }}
+                        layout={{ width: 1500, height: 700, title: 'Stock market of reliance' }}
                     />
                 </div>
             </>

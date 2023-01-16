@@ -11,6 +11,7 @@ import Ashokley from "./Components/Ashokley";
 import Cipla from "./Components/Cipla";
 import Tatasteel from "./Components/Tatasteel";
 import Eichermot from "./Components/Eichermot";
+import Home from "./Components/Home";
 
 
 
@@ -21,6 +22,7 @@ function App() {
       {/* <Router> */}
       <Routes>
         <Route path='/' element={<Login />}></Route>
+        <Route path='/home' element={<Home />}></Route>
         <Route path='/signup' element={<Signup />}></Route>
         <Route path='/navbar' element={<Navbar />}></Route>
         <Route path='/nse' element={<Nse />}></Route>

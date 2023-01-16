@@ -18,7 +18,7 @@ const Login = () => {
         })
         const json = await response.json()
         if (json.isLogged) {
-            navigate('navbar')
+            navigate('/home')
         }
         else {
             alert('INVALID CREDENTIALS')

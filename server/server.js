@@ -81,17 +81,40 @@ app.post('/loginapi', async (req, res) => {
 })
 
 
-app.get('/stocks/:stocktype', async (req, res) => {
+app.post('/stocks/:stocktype', async (req, res) => {
         await Stock.find({ StockType: req.params.stocktype })
                 .then(result => {
                         if (result == null) {
                                 res.send("Invalid Stock")
                         }
                         else {
-                                res.json(result)
+                                let stockVolumeSum = 0
+                                let open = 0
+                                let close = 0
+                                let high = 0
+                                let low = 0
+
+                                result.forEach(stock => {
+                                        stockVolumeSum += stock.Volume
+                                        open += stock.Open
+                                        close += stock.Close
+                                        high += stock.High
+                                        low += stock.Low
+                                })
+
+
+                                res.json({
+                                        volume: (stockVolumeSum / result.length).toFixed(2),
+                                        open: (open * result.length).toFixed(2),
+                                        close: (close * result.length).toFixed(2),
+                                        high: (high * result.length).toFixed(2),
+                                        low: (low * result.length).toFixed(2),
+                                        weeklow: (low).toFixed(2),
+                                        weekhigh: (high).toFixed(2)
+                                })
                         }
                 })
-                .catch(err => console.log(err))
+                .catch(err => res.json('err'))
 })
 
 

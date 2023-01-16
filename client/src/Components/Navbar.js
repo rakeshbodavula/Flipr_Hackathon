@@ -10,7 +10,13 @@ export default function Navbar({ getName }) {
     const [button, setButton] = useState(true);
 
     const handleClick = () => setClick(!click);
-    const closeMobileMenu = () => setClick(false);
+    const closeMobileMenu = () => {
+        setClick(false)
+        alert("logged out succesfully");
+    };
+    const closeMobile = () => {
+        setClick(false)
+    };
 
     const showButton = () => {
         if (window.innerWidth <= 960) {
@@ -29,16 +35,16 @@ export default function Navbar({ getName }) {
         <>
             <div className='navbar'>
                 <div className='navbar-container'>
-                    <Link className='navbar-logo' onClick={closeMobileMenu}>
-                        TRVL<i className='fab fa-typo3' />
+                    <Link to="/home" className='navbar-logo' onClick={closeMobile}>
+                        NSSR<i className='fab fa-typo3' />
                     </Link>
                     <div className='menu-icon' onClick={handleClick}>
                         <i className={click ? 'fas fa-times' : 'fas fa-bars'} />
                     </div>
                     <ul className={click ? 'nav-menu active' : 'nav-menu'}>
                         <li className='nav-item'>
-                            <Link className='nav-links' onClick={closeMobileMenu}>
-                                Home
+                            <Link to="/" className='nav-links' onClick={closeMobileMenu}>
+                                Logout<i className="fa-solid fa-arrow-right-to-bracket" style={{ marginLeft: '10px' }} />
                             </Link>
                         </li>
                         <li className='dropdown1' >

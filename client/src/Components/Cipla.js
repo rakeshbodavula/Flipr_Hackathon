@@ -48,12 +48,12 @@ class Cipla extends Component {
                                 type: 'scatter',
                                 x: this.transformData(this.state.data)['x'],
                                 y: this.transformData(this.state.data)['y'],
-                                mode: 'lines',
+                                mode: 'markers',
                                 marker: { color: '#ff2c2c' },
                             },
                             // { type: 'bar', x: this.transformData(this.state.data)['x'], y: this.transformData(this.state.data)['y'] },
                         ]}
-                        layout={{ width: 1000, height: 500, title: 'Stock market of cipla' }}
+                        layout={{ width: 1500, height: 700, title: 'Stock market of cipla' }}
                     />
                 </div>
             </>
