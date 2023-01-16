@@ -45,12 +45,13 @@ class Cipla extends Component {
                     <Plot
                         data={[
                             {
+                                type: 'scatter',
                                 x: this.transformData(this.state.data)['x'],
                                 y: this.transformData(this.state.data)['y'],
-                                mode: 'lines+markers',
+                                mode: 'lines',
                                 marker: { color: '#ff2c2c' },
                             },
-                            { type: 'bar', x: this.stockChartXValues, y: this.stockChartYValues },
+                            // { type: 'bar', x: this.transformData(this.state.data)['x'], y: this.transformData(this.state.data)['y'] },
                         ]}
                         layout={{ width: 1000, height: 500, title: 'Stock market of cipla' }}
                     />

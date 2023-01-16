@@ -79,7 +79,7 @@ export default function Navbar({ getName }) {
                             </Link>
                         </li> */}
                     </ul>
-                    {button && <Button></Button>}
+                    {button}
                 </div>
             </div>
         </>
