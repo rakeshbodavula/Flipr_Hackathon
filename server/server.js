@@ -21,6 +21,7 @@ const dbURI = 'mongodb+srv://flipr:flipr%40hackathon@cluster0.dkyw7jy.mongodb.ne
 
 
 const port = process.env.PORT || 9999
+
 mongoose.connect(dbURI, { useNewUrlParser: true })
         .then(app.listen(port, (err) => {
                 console.log(`http://localhost:${port}/`)
@@ -130,13 +131,3 @@ app.get('/companies/:companyName', async (req, res) => {
                 })
                 .catch(err => console.log(err))
 })
-
-
-if (process.env.NODE_ENV == 'production') {
-        const path = require('path')
-
-        app.get('/', (req, res) => {
-                app.use(express.static(path.resolve(__dirname, 'client', 'build')))
-                res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'))
-        })
-}
